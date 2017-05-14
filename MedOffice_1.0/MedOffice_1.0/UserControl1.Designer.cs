@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.searchButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.firstNameBox = new System.Windows.Forms.TextBox();
             this.ageBox = new System.Windows.Forms.TextBox();
@@ -56,18 +55,14 @@
             this.textBox_gender = new System.Windows.Forms.TextBox();
             this.checkinBox = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.cboSelectTestResult = new System.Windows.Forms.ComboBox();
+            this.lblTestResult = new System.Windows.Forms.Label();
+            this.lblPatientTestResult = new System.Windows.Forms.Label();
+            this.lblPercentageTestResult = new System.Windows.Forms.Label();
+            this.txtTestPercentage = new System.Windows.Forms.TextBox();
+            this.cboPatientResult = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // searchButton
-            // 
-            this.searchButton.Location = new System.Drawing.Point(130, 321);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(75, 23);
-            this.searchButton.TabIndex = 0;
-            this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // saveButton
             // 
@@ -158,9 +153,9 @@
             // patientBox
             // 
             this.patientBox.FormattingEnabled = true;
-            this.patientBox.Location = new System.Drawing.Point(356, 270);
+            this.patientBox.Location = new System.Drawing.Point(297, 91);
             this.patientBox.Name = "patientBox";
-            this.patientBox.Size = new System.Drawing.Size(335, 160);
+            this.patientBox.Size = new System.Drawing.Size(262, 147);
             this.patientBox.TabIndex = 11;
             // 
             // lastNameBox
@@ -217,7 +212,7 @@
             this.textBox_Allergies_Diseases_Meds.Location = new System.Drawing.Point(103, 268);
             this.textBox_Allergies_Diseases_Meds.Multiline = true;
             this.textBox_Allergies_Diseases_Meds.Name = "textBox_Allergies_Diseases_Meds";
-            this.textBox_Allergies_Diseases_Meds.Size = new System.Drawing.Size(206, 162);
+            this.textBox_Allergies_Diseases_Meds.Size = new System.Drawing.Size(188, 162);
             this.textBox_Allergies_Diseases_Meds.TabIndex = 33;
             // 
             // label_address
@@ -234,7 +229,7 @@
             this.textBox_address.Location = new System.Drawing.Point(12, 172);
             this.textBox_address.Multiline = true;
             this.textBox_address.Name = "textBox_address";
-            this.textBox_address.Size = new System.Drawing.Size(330, 58);
+            this.textBox_address.Size = new System.Drawing.Size(279, 58);
             this.textBox_address.TabIndex = 32;
             // 
             // label_phoneNumber
@@ -288,7 +283,7 @@
             // checkinBox
             // 
             this.checkinBox.AutoSize = true;
-            this.checkinBox.Location = new System.Drawing.Point(474, 436);
+            this.checkinBox.Location = new System.Drawing.Point(477, 437);
             this.checkinBox.Name = "checkinBox";
             this.checkinBox.Size = new System.Drawing.Size(68, 17);
             this.checkinBox.TabIndex = 43;
@@ -297,7 +292,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(471, 459);
+            this.button1.Location = new System.Drawing.Point(474, 460);
             this.button1.Name = "button1";
             this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -305,24 +300,85 @@
             this.button1.Text = "Update";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // searchButton
             // 
-            this.button2.Location = new System.Drawing.Point(139, 460);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 41;
-            this.button2.Text = "Search";
-            this.button2.UseVisualStyleBackColor = true;
+            this.searchButton.Location = new System.Drawing.Point(139, 460);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(75, 23);
+            this.searchButton.TabIndex = 41;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // cboSelectTestResult
+            // 
+            this.cboSelectTestResult.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSelectTestResult.FormattingEnabled = true;
+            this.cboSelectTestResult.Location = new System.Drawing.Point(400, 269);
+            this.cboSelectTestResult.Name = "cboSelectTestResult";
+            this.cboSelectTestResult.Size = new System.Drawing.Size(121, 21);
+            this.cboSelectTestResult.TabIndex = 44;
+            this.cboSelectTestResult.SelectedIndexChanged += new System.EventHandler(this.cboSelectTestResult_SelectedIndexChanged);
+            // 
+            // lblTestResult
+            // 
+            this.lblTestResult.AutoSize = true;
+            this.lblTestResult.Location = new System.Drawing.Point(297, 272);
+            this.lblTestResult.Name = "lblTestResult";
+            this.lblTestResult.Size = new System.Drawing.Size(97, 13);
+            this.lblTestResult.TabIndex = 45;
+            this.lblTestResult.Text = "Select Test Result:";
+            // 
+            // lblPatientTestResult
+            // 
+            this.lblPatientTestResult.AutoSize = true;
+            this.lblPatientTestResult.Location = new System.Drawing.Point(297, 305);
+            this.lblPatientTestResult.Name = "lblPatientTestResult";
+            this.lblPatientTestResult.Size = new System.Drawing.Size(100, 13);
+            this.lblPatientTestResult.TabIndex = 46;
+            this.lblPatientTestResult.Text = "Patient Test Result:";
+            // 
+            // lblPercentageTestResult
+            // 
+            this.lblPercentageTestResult.AutoSize = true;
+            this.lblPercentageTestResult.Location = new System.Drawing.Point(297, 331);
+            this.lblPercentageTestResult.Name = "lblPercentageTestResult";
+            this.lblPercentageTestResult.Size = new System.Drawing.Size(190, 13);
+            this.lblPercentageTestResult.TabIndex = 47;
+            this.lblPercentageTestResult.Text = "% Of Other Patients With Same Result:";
+            // 
+            // txtTestPercentage
+            // 
+            this.txtTestPercentage.Location = new System.Drawing.Point(493, 328);
+            this.txtTestPercentage.Name = "txtTestPercentage";
+            this.txtTestPercentage.ReadOnly = true;
+            this.txtTestPercentage.Size = new System.Drawing.Size(28, 20);
+            this.txtTestPercentage.TabIndex = 49;
+            // 
+            // cboPatientResult
+            // 
+            this.cboPatientResult.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPatientResult.FormattingEnabled = true;
+            this.cboPatientResult.Location = new System.Drawing.Point(400, 301);
+            this.cboPatientResult.Name = "cboPatientResult";
+            this.cboPatientResult.Size = new System.Drawing.Size(121, 21);
+            this.cboPatientResult.TabIndex = 50;
             // 
             // Clerical
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
-            this.ClientSize = new System.Drawing.Size(720, 494);
+            this.ClientSize = new System.Drawing.Size(560, 483);
+            this.Controls.Add(this.cboPatientResult);
+            this.Controls.Add(this.txtTestPercentage);
+            this.Controls.Add(this.lblPercentageTestResult);
+            this.Controls.Add(this.lblPatientTestResult);
+            this.Controls.Add(this.lblTestResult);
+            this.Controls.Add(this.cboSelectTestResult);
             this.Controls.Add(this.checkinBox);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.searchButton);
             this.Controls.Add(this.medicationRadio);
             this.Controls.Add(this.diseaseRadio);
             this.Controls.Add(this.allergyRadio);
@@ -348,7 +404,6 @@
             this.Controls.Add(this.ageBox);
             this.Controls.Add(this.firstNameBox);
             this.Controls.Add(this.saveButton);
-            this.Controls.Add(this.searchButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Clerical";
             this.Load += new System.EventHandler(this.Clerical_Load);
@@ -359,7 +414,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.TextBox firstNameBox;
         private System.Windows.Forms.TextBox ageBox;
@@ -387,6 +441,12 @@
         private System.Windows.Forms.TextBox textBox_gender;
         private System.Windows.Forms.CheckBox checkinBox;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.ComboBox cboSelectTestResult;
+        private System.Windows.Forms.Label lblTestResult;
+        private System.Windows.Forms.Label lblPatientTestResult;
+        private System.Windows.Forms.Label lblPercentageTestResult;
+        private System.Windows.Forms.TextBox txtTestPercentage;
+        private System.Windows.Forms.ComboBox cboPatientResult;
     }
 }

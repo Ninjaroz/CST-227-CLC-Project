@@ -50,3 +50,4 @@ C:\Users\Gary\Downloads\CST-227-CLC-Project-master\MedOffice_1.0\MedOffice_1.0\o
 C:\Users\Gary\Downloads\CST-227-CLC-Project-master\MedOffice_1.0\MedOffice_1.0\obj\Debug\MedOffice_1._0.Properties.Resources.resources
 C:\Users\Gary\Downloads\CST-227-CLC-Project-master\MedOffice_1.0\MedOffice_1.0\obj\Debug\MedOffice_1._0.Clerical.resources
 C:\Users\Gary\Downloads\CST-227-CLC-Project-master\MedOffice_1.0\MedOffice_1.0\obj\Debug\MedOffice_1.0.csproj.GenerateResource.Cache
+C:\Users\Gary\Desktop\CST-227-CLC-Project-master\MedOffice_1.0\MedOffice_1.0\obj\Debug\MedOffice_1._0.Medical_Assistant_Form.resources

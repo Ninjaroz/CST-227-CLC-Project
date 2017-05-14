@@ -93,7 +93,7 @@ namespace MedOffice_1._0
                 conn.Open();
                 OleDbCommand comm = new OleDbCommand();
                 comm.Connection = conn;
-                //  SQL command to add schedule to employee record in database
+                //  SQL command to add schedule to employee record in Logins table
                 String aCommand = "Select Username, Schedule, Work_Weekends FROM Logins";
                 OleDbCommand com = new OleDbCommand(aCommand, conn);
                 DataSet ds = new DataSet();

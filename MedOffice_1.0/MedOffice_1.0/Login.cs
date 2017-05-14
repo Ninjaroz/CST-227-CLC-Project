@@ -47,7 +47,7 @@ namespace MedOffice_1._0
                     //Admin login page 1 is Admin group ID has rights to all forms
                     case "1":
                     //Creates and opens the MDI and sets all forms to true
-                    Main_Menu aMDI = new Main_Menu(username, true,true,true);
+                    Main_Menu aMDI = new Main_Menu(username, true,true,true,true);
                     aMDI.Show();
                     //Clears username, password, and permission in Login menu for variables and text fields
                     usernameBox.Text = username = passwordBox.Text = password = permission = "";
@@ -56,16 +56,24 @@ namespace MedOffice_1._0
                     //Clerical login page 2 is Clerical groupID only has access to Clerical form
                     case "2":
                     //Creates and opens the MDI and sets Clerical form to true
-                    Main_Menu cMDI = new Main_Menu(username,true,false,true);
+                    Main_Menu cMDI = new Main_Menu(username,true,false,true,false);
                     cMDI.Show();
                     //Clears username, password, and permission in Login menu for variables and text fields
                     usernameBox.Text = username = passwordBox.Text = password = permission = "";
                     break;
                     
                     case "4":
-                    //Creates and opens the MDI and sets only staffing form to true
-                    Main_Menu oMDI = new Main_Menu(username, false,true,false);
+                    //Creates and opens the MDI and sets only Office_Manager_Form to true
+                    Main_Menu oMDI = new Main_Menu(username, false,true,false,false);
                     oMDI.Show();
+                    //Clears username, password, and permission in Login menu for variables and text fields
+                    usernameBox.Text = username = passwordBox.Text = password = permission = "";
+                    break;
+
+                    case "5":
+                    //Creates and opens the MDI and sets only Medical Assistant form form to true
+                    Main_Menu mMDI = new Main_Menu(username, false, false, false,true);
+                    mMDI.Show();
                     //Clears username, password, and permission in Login menu for variables and text fields
                     usernameBox.Text = username = passwordBox.Text = password = permission = "";
                     break;

@@ -66,6 +66,12 @@
     <Compile Include="Main Menu.Designer.cs">
       <DependentUpon>Main Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Medical Assistant Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Medical Assistant Form.Designer.cs">
+      <DependentUpon>Medical Assistant Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="MedOfficeDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -93,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main Menu.resx">
       <DependentUpon>Main Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Medical Assistant Form.resx">
+      <DependentUpon>Medical Assistant Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Office_Manager_Form.resx">
       <DependentUpon>Office_Manager_Form.cs</DependentUpon>

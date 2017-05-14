@@ -41,6 +41,7 @@
             this.clericalFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.staffingFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addClientAppointmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.medicalAssistantFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.Welcomelbl = new System.Windows.Forms.ToolStripStatusLabel();
@@ -76,12 +77,12 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(137, 6);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(137, 6);
             // 
             // printToolStripMenuItem
             // 
@@ -89,19 +90,19 @@
             this.printToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
             this.printToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.printToolStripMenuItem.Text = "&Print";
             this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(137, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolsStripMenuItem_Click);
             // 
@@ -110,7 +111,8 @@
             this.formsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clericalFormToolStripMenuItem,
             this.staffingFormToolStripMenuItem,
-            this.addClientAppointmentToolStripMenuItem});
+            this.addClientAppointmentToolStripMenuItem,
+            this.medicalAssistantFormToolStripMenuItem});
             this.formsToolStripMenuItem.Name = "formsToolStripMenuItem";
             this.formsToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.formsToolStripMenuItem.Text = "Forms";
@@ -135,6 +137,13 @@
             this.addClientAppointmentToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.addClientAppointmentToolStripMenuItem.Text = "Add Client Appointment";
             this.addClientAppointmentToolStripMenuItem.Click += new System.EventHandler(this.addClientAppointmentToolStripMenuItem_Click);
+            // 
+            // medicalAssistantFormToolStripMenuItem
+            // 
+            this.medicalAssistantFormToolStripMenuItem.Name = "medicalAssistantFormToolStripMenuItem";
+            this.medicalAssistantFormToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.medicalAssistantFormToolStripMenuItem.Text = "Medical Assistant Form";
+            this.medicalAssistantFormToolStripMenuItem.Click += new System.EventHandler(this.medicalAssistantFormToolStripMenuItem_Click);
             // 
             // toolStrip
             // 
@@ -195,10 +204,10 @@
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripMenuItem formsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clericalFormToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripStatusLabel Welcomelbl;
         private System.Windows.Forms.ToolStripMenuItem staffingFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addClientAppointmentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem medicalAssistantFormToolStripMenuItem;
     }
 }
 

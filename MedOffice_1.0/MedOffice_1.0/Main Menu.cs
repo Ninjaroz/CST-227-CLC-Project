@@ -15,7 +15,7 @@ namespace MedOffice_1._0
         /*Enables forms based on user Permissions passed in
          * If adding another form please go back to login.cs and add form values to each permission in the switch 
         */
-        public Main_Menu(String username, Boolean cForm, Boolean oForm, Boolean aForm)
+        public Main_Menu(String username, Boolean cForm, Boolean oForm, Boolean aForm, Boolean mForm)
         {
             InitializeComponent();
             Welcomelbl.Text = "Welcome " + username;
@@ -23,6 +23,7 @@ namespace MedOffice_1._0
             clericalFormToolStripMenuItem.Enabled = cForm;
             staffingFormToolStripMenuItem.Enabled = oForm;
             addClientAppointmentToolStripMenuItem.Enabled = aForm;
+            medicalAssistantFormToolStripMenuItem.Enabled = mForm;
 
         }
        
@@ -64,6 +65,15 @@ namespace MedOffice_1._0
             //Opens nClerical form in the MDI container
             nAMF.MdiParent = this;
             nAMF.Show();
+        }
+
+        //Medical Assistant Form
+        private void medicalAssistantFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Medical_Assistant_Form nMMF = new Medical_Assistant_Form();
+            //Opens nClerical form in the MDI container
+            nMMF.MdiParent = this;
+            nMMF.Show();
         }
     }
 }

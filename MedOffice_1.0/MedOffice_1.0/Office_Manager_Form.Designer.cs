@@ -188,6 +188,7 @@
             this.Controls.Add(this.btnViewSchedule);
             this.Controls.Add(this.lblEmployee);
             this.Controls.Add(this.cboEmployees);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Office_Manager_Form";
             this.Text = "Staffing Form";
             this.Load += new System.EventHandler(this.Office_Manager_Form_Load);
