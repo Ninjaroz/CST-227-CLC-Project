@@ -13,34 +13,49 @@ namespace MedOffice_1._0
         private void checkInButton_Click(object sender, EventArgs e)
         {
             string checkIn = "Yes";
-            conn.Open();
-            OleDbCommand comm = new OleDbCommand();
-            comm.Connection = conn;
-            comm.CommandText = "UPDATE OurPatients SET Checked_In = '" + checkIn + "' WHERE PatientLast= '"
-                + patientLast + "' and PatientFirst = '" + patientFirst + "'";
-            comm.ExecuteNonQuery();
-            MessageBox.Show("Patient checked in successfully");
-            conn.Close();
+            try
+            {
+                conn.Open();
+                OleDbCommand comm = new OleDbCommand();
+                comm.Connection = conn;
+                comm.CommandText = "UPDATE OurPatients SET Checked_In = '" + checkIn + "' WHERE PatientLast= '"
+                    + patientLast + "' and PatientFirst = '" + patientFirst + "'";
+                comm.ExecuteNonQuery();
+                MessageBox.Show("Patient checked in successfully");
+                conn.Close();
+            }
+
+            catch (OleDbException f)
+            {
+                MessageBox.Show("Please select a patient to check in.");
+            }
         }
 
         private void apptSave_Click(object sender, EventArgs e)
         {
             string date = apptDateBox.Text;
-            conn.Open();
-            OleDbCommand comm = new OleDbCommand();
-            comm.Connection = conn;
-            comm.CommandText = "UPDATE OurPatients SET AppointmentDate= '"
-                + date + "' WHERE PatientLast= '" + patientLast
-                + "' and PatientFirst= '" + patientFirst + "' and PatientAge= '" + age + "'";
-            comm.ExecuteNonQuery();
-            MessageBox.Show("Appointment set for " + date);
-            conn.Close();
-            firstNameBox.Clear();
-            lastNameBox.Clear();
-            patientBox.Items.Clear();
-            ageBox.Clear();
-            dobBox.Clear();
-            patientBox.Items.Clear();
+            try
+            {
+                conn.Open();
+                OleDbCommand comm = new OleDbCommand();
+                comm.Connection = conn;
+                comm.CommandText = "UPDATE OurPatients SET AppointmentDate= '"
+                    + date + "' WHERE PatientLast= '" + patientLast
+                    + "' and PatientFirst= '" + patientFirst + "' and PatientAge= '" + age + "'";
+                comm.ExecuteNonQuery();
+                MessageBox.Show("Appointment set for " + date);
+                conn.Close();
+                firstNameBox.Clear();
+                lastNameBox.Clear();
+                patientBox.Items.Clear();
+                ageBox.Clear();
+                dobBox.Clear();
+                patientBox.Items.Clear();
+            }
+            catch (OleDbException f)
+            {
+                MessageBox.Show("Unable to save appointment, please ensure that the name, date, and age are filled in.");
+            }
         }
 
         private void viewApptButton_Click(object sender, EventArgs e)
@@ -57,23 +72,30 @@ namespace MedOffice_1._0
             ins = insBox.Text;
             age = ageBox.Text;
 
-            conn.Open();
-            OleDbCommand comm = new OleDbCommand();
-            comm.Connection = conn;
-            comm.CommandText = "INSERT INTO OurPatients(PatientLast, PatientFirst, PatientAge"
-                + ", PatientDOB, PatientIns)" +
-                     "VALUES ('" + patientLast + "', '" + patientFirst
-                     + "', '" + age + "', '" + dob + "', '"
-                     + ins + "')";
-            comm.Parameters.AddWithValue("@PatientLast", patientLast);
-            comm.Parameters.AddWithValue("@PatientFirst", patientFirst);
-            comm.Parameters.AddWithValue("@PatientAge", age);
-            comm.Parameters.AddWithValue("@PatientDOB", dob);
-            comm.Parameters.AddWithValue("@PatientIns", ins);
+            try
+            {
+                conn.Open();
+                OleDbCommand comm = new OleDbCommand();
+                comm.Connection = conn;
+                comm.CommandText = "INSERT INTO OurPatients(PatientLast, PatientFirst, PatientAge"
+                    + ", PatientDOB, PatientIns)" +
+                         "VALUES ('" + patientLast + "', '" + patientFirst
+                         + "', '" + age + "', '" + dob + "', '"
+                         + ins + "')";
+                comm.Parameters.AddWithValue("@PatientLast", patientLast);
+                comm.Parameters.AddWithValue("@PatientFirst", patientFirst);
+                comm.Parameters.AddWithValue("@PatientAge", age);
+                comm.Parameters.AddWithValue("@PatientDOB", dob);
+                comm.Parameters.AddWithValue("@PatientIns", ins);
 
-            comm.ExecuteNonQuery();
+                comm.ExecuteNonQuery();
 
-            conn.Close();
+                conn.Close();
+            }
+            catch (OleDbException f)
+            {
+                MessageBox.Show("Please ensure all fields are filled in.");
+            }
         }
 
         private void Clerical_Load(object sender, EventArgs e)
@@ -106,28 +128,35 @@ namespace MedOffice_1._0
             ins = insBox.Text;
             age = ageBox.Text;
 
-            conn.Open();
-            OleDbCommand comm = new OleDbCommand();
-            comm.Connection = conn;
-
-            comm.CommandText = "SELECT * FROM OurPatients WHERE PatientLast= '"
-                + patientLast + "' or PatientFirst= '" + patientFirst
-                + "'";
-            OleDbDataReader reader = comm.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                patientLast = (reader["PatientLast"].ToString());
-                patientFirst = (reader["PatientFirst"].ToString());
-                age = (reader["PatientAge"].ToString());
-                dob = (reader["PatientDOB"].ToString());
-                ins = (reader["PatientIns"].ToString());
-                fullPatient = ("" + patientLast + "," + patientFirst + " age "
-                    + age + " " + dob + " " + ins);
-                patientBox.Items.Add(fullPatient);
-            }
+                conn.Open();
+                OleDbCommand comm = new OleDbCommand();
+                comm.Connection = conn;
 
-            conn.Close();
+                comm.CommandText = "SELECT * FROM OurPatients WHERE PatientLast= '"
+                    + patientLast + "' or PatientFirst= '" + patientFirst
+                    + "'";
+                OleDbDataReader reader = comm.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    patientLast = (reader["PatientLast"].ToString());
+                    patientFirst = (reader["PatientFirst"].ToString());
+                    age = (reader["PatientAge"].ToString());
+                    dob = (reader["PatientDOB"].ToString());
+                    ins = (reader["Insurance_ID"].ToString());
+                    fullPatient = ("" + patientLast + "," + patientFirst + " age "
+                        + age + " " + dob + " " + ins);
+                    patientBox.Items.Add(fullPatient);
+                }
+
+                conn.Close();
+            }
+            catch (OleDbException f)
+            {
+                MessageBox.Show("Please enter a first or last name.");
+            }
         }
     }
 }
