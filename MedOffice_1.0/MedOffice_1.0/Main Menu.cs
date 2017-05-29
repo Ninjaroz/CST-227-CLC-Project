@@ -13,13 +13,14 @@ namespace MedOffice_1._0
     public partial class Main_Menu : Form
     {
         //Enables forms based 
-        public Main_Menu(Boolean cForm, Boolean mAForm)
+        public Main_Menu(Boolean cForm, Boolean mAForm, Boolean iForm)
         {
             //Code in this method happens as the application is opened
             InitializeComponent();
             //Enables the forms the users have access to
             clericalFormToolStripMenuItem.Enabled = cForm;
             medicalAssistantToolStripMenuItem.Enabled = mAForm;
+            invoiceReportToolStripMenuItem.Enabled = iForm;
             Size = new Size(800, 600);
         }
         //Closes application
@@ -56,6 +57,18 @@ namespace MedOffice_1._0
             MedicalAssistant medAssist = new MedicalAssistant();
             medAssist.MdiParent = this;
             medAssist.Show();
+        }
+
+        private void invoiceReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Patients_Invoices nPInvoices = new Patients_Invoices();
+            nPInvoices.MdiParent = this;
+            nPInvoices.Show();
+        }
+
+        private void medicalAssistantToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+           
         }
     }
 }

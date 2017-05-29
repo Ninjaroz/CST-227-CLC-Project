@@ -29,7 +29,7 @@ namespace MedOffice_1._0
 
         private void Main_Click(object sender, EventArgs e)
         {
-            Main_Menu cMDI = new Main_Menu(true, false);
+            Main_Menu cMDI = new Main_Menu(true, false,true);
             //Opens Clerical form
             cMDI.Show();
             this.Hide();

@@ -83,6 +83,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MedOfficeDB_Test_13MayDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Patients_Invoices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Patients_Invoices.Designer.cs">
+      <DependentUpon>Patients_Invoices.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patient_Xray.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MedicalAssistant.resx">
       <DependentUpon>MedicalAssistant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Patients_Invoices.resx">
+      <DependentUpon>Patients_Invoices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Patient_Xray.resx">
       <DependentUpon>Patient_Xray.cs</DependentUpon>
