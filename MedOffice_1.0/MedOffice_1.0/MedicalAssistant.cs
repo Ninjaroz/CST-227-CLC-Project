@@ -132,51 +132,58 @@ namespace MedOffice_1._0
                     selectFirst = temp.Substring(2, (ageIndex - i - 2));
                 }
             }
-            conn.Open();
-            comm.CommandText = "SELECT * FROM OurPatients WHERE PatientLast= '"
-                + selectLast + "' and PatientFirst= '" + selectFirst + "'";
-            OleDbDataReader reader = comm.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                string medicat = (reader["Medications"].ToString());
-                string allergy = (reader["Allergies"].ToString());
-                string disease = (reader["Diseases"].ToString());
-                string[] medArr = medicat.Split(',');
-                string[] allArr = allergy.Split(',');
-                string[] disArr = disease.Split(',');
-                for (int i = 0; i < medArr.Length; i++)
+                conn.Open();
+                comm.CommandText = "SELECT * FROM OurPatients WHERE PatientLast= '"
+                    + selectLast + "' and PatientFirst= '" + selectFirst + "'";
+                OleDbDataReader reader = comm.ExecuteReader();
+                while (reader.Read())
                 {
-                    if (medArr[i] != "")
+                    string medicat = (reader["Medications"].ToString());
+                    string allergy = (reader["Allergies"].ToString());
+                    string disease = (reader["Diseases"].ToString());
+                    string[] medArr = medicat.Split(',');
+                    string[] allArr = allergy.Split(',');
+                    string[] disArr = disease.Split(',');
+                    for (int i = 0; i < medArr.Length; i++)
                     {
-                        medBox.Items.Add(medArr[i]);
+                        if (medArr[i] != "")
+                        {
+                            medBox.Items.Add(medArr[i]);
+                        }
+                        else
+                        {
+                        }
                     }
-                    else
+                    for (int j = 0; j < allArr.Length; j++)
                     {
+                        if (allArr[j] != "")
+                        {
+                            allBox.Items.Add(allArr[j]);
+                        }
+                        else
+                        {
+                        }
+                    }
+                    for (int h = 0; h < disArr.Length; h++)
+                    {
+                        if (disArr[h] != "")
+                        {
+                            disBox.Items.Add(disArr[h]);
+                        }
+                        else
+                        {
+                        }
                     }
                 }
-                for (int j = 0; j < allArr.Length; j++)
-                {
-                    if (allArr[j] != "")
-                    {
-                        allBox.Items.Add(allArr[j]);
-                    }
-                    else
-                    {
-                    }
-                }
-                for (int h = 0; h < disArr.Length; h++)
-                {
-                    if (disArr[h] != "")
-                    {
-                        disBox.Items.Add(disArr[h]);
-                    }
-                    else
-                    {
-                    }
-                }
+                conn.Close();
+                nameLabel.Text = selectLast + ", " + selectFirst;
             }
-            conn.Close();
-            nameLabel.Text = selectLast + ", " + selectFirst;
+            catch (OleDbException f)
+            {
+                MessageBox.Show("Please select a patient.");
+            }
         }
 
         //Get allergies from the allergy box
@@ -256,15 +263,22 @@ namespace MedOffice_1._0
 
             OleDbCommand comm = new OleDbCommand();
             comm.Connection = conn;
-            conn.Open();
-            comm.CommandText = "UPDATE OurPatients SET [Allergies]= '"
-                + aller + "', [Diseases]= '" + dis + "', [Medications]= '"
-                + med + "', [BloodPressure]= '" + bp + "', [Oxygen]= '"
-                + o2 + "', [Temperature]= '" + tempF + "' WHERE PatientLast= '"
-                + selectLast + "' and PatientFirst= '"
-                + selectFirst + "'";
-            comm.ExecuteNonQuery();
-            conn.Close();
+            try
+            {
+                conn.Open();
+                comm.CommandText = "UPDATE OurPatients SET [Allergies]= '"
+                    + aller + "', [Diseases]= '" + dis + "', [Medications]= '"
+                    + med + "', [BloodPressure]= '" + bp + "', [Oxygen]= '"
+                    + o2 + "', [Temperature]= '" + tempF + "' WHERE PatientLast= '"
+                    + selectLast + "' and PatientFirst= '"
+                    + selectFirst + "'";
+                comm.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (OleDbException f)
+            {
+                MessageBox.Show("Unable to update information, please ensure you have filled out the patient name.");
+            }
         }
 
         public MedicalAssistant()
@@ -280,23 +294,30 @@ namespace MedOffice_1._0
             medBox.Items.Clear();
             allBox.Items.Clear();
             disBox.Items.Clear();
-            conn.Open();
-            lastName = lastBox.Text;
-            firstName = firstBox.Text;
-            OleDbCommand comm = new OleDbCommand();
-            comm.Connection = conn;
-            comm.CommandText = "SELECT * FROM OurPatients WHERE PatientLast= '"
-                + lastName + "' or PatientFirst= '" + firstName + "'";
-            OleDbDataReader reader = comm.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                lastName = (reader["PatientLast"].ToString());
-                firstName = (reader["PatientFirst"].ToString());
-                age = (reader["PatientAge"].ToString());
+                conn.Open();
+                lastName = lastBox.Text;
+                firstName = firstBox.Text;
+                OleDbCommand comm = new OleDbCommand();
+                comm.Connection = conn;
+                comm.CommandText = "SELECT * FROM OurPatients WHERE PatientLast= '"
+                    + lastName + "' or PatientFirst= '" + firstName + "'";
+                OleDbDataReader reader = comm.ExecuteReader();
+                while (reader.Read())
+                {
+                    lastName = (reader["PatientLast"].ToString());
+                    firstName = (reader["PatientFirst"].ToString());
+                    age = (reader["PatientAge"].ToString());
 
+                }
+                patientList.Items.Add(lastName + ", " + firstName + " age " + age);
+                conn.Close();
             }
-            patientList.Items.Add(lastName + ", " + firstName + " age " + age);
-            conn.Close();
+            catch (OleDbException f)
+            {
+                MessageBox.Show("Please enter a first or last name to search.");
+            }
         }
     }
 }
